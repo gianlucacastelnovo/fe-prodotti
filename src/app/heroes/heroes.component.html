@@ -1,0 +1,52 @@
+
+
+<head>
+  <style>
+
+    img{
+      height: 100%;
+      width: 100%;
+
+      }
+
+
+  </style>
+</head>
+<body>
+
+
+
+<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+    <div fxLayout="row wrap">
+      <div
+        *ngFor="let prodotto of prodottiData"
+        fxFlex="25"
+        fxFlex.md="33"
+        fxFlex.sm="50"
+        fxFlex.xs="80"
+        fxLayout="column"
+        style="padding: 5px;"
+      >
+        <!-- cards here -->
+        <mat-card class="mat-elevation-z1">
+          <img mat-card-image [src]="prodotto.path" />
+          <mat-card-title> {{ prodotto.name }} </mat-card-title>
+          <mat-card-content> {{ prodotto.name }} </mat-card-content>
+          <mat-card-footer class="form-group form-inline">
+              <button  (click)="onChange(prodotto,+1)" color="primary">+</button>
+             <!--<button (click)="onAdd()" color="primary">+</button>-->
+              <input [(ngModel)]="prodotto.num" placeholder="num"/>
+              <button  (click)="onChange(prodotto,-1)" color="primary">-</button>
+             <!--<button (click)="onRemove()" color="primary">-</button>-->
+
+
+
+
+
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+</body>

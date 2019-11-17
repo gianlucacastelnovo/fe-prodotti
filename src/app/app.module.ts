@@ -176,7 +176,7 @@ import { ProdottoListComponent } from './prodotto-list/prodotto-list.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export class MaterialModule {};
+export class MaterialModule {}
 
 /*
 Copyright Google LLC. All Rights Reserved.

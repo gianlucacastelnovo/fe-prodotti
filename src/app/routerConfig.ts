@@ -10,12 +10,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ProdottoListComponent } from './prodotto-list/prodotto-list.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'about',        component: AboutComponent },
+ { path: 'about',        component: AboutComponent },
   { path: 'privacy',        component: PrivacyComponent },
   { path: 'terms',        component: TermsComponent },
   { path: 'carrello',        component: CarrelloComponent },
-  { path: 'prodottoList',        component: ProdottoListComponent },
+ { path: 'prodottoList',        component: ProdottoListComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+ /*  { path: '**', component: PageNotFoundComponent }*/
 ];
 export default routes;

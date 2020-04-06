@@ -42,6 +42,11 @@ export class HeroesComponent implements OnInit {
     // tslint:disable-next-line: whitespace
     if( element.num < 0 ) element.num = 0;
     console.log('Add button is clicked!');
+
+    this.prodottoService.getList().subscribe(response => {
+      console.log(response);
+      this.prodottiData = response;
+    })
   }
   onAdd(){
     this.prodottiData[0].num = 6;

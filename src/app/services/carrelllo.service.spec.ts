@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CarrelloService } from './carrello.service ';
+import { CarrellloService } from './carrelllo.service';
 
-describe('CarrelloService', () => {
+describe('CarrellloService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: CarrelloService = TestBed.get(CarrelloService);
+    const service: CarrellloService = TestBed.get(CarrellloService);
     expect(service).toBeTruthy();
   });
 });

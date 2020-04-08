@@ -13,22 +13,38 @@
     </style>
   </head>
   <body>
-        <div class="container m-2 pb-0 " *ngFor="let carrello of carrellos">
-            <div class="row">
-                <div class="col-sm-3 img-fluid">
-                    <img src={{carrello.path}} />
-                </div>
-                <div class="col-sm-6">
-                    <div><span>id: </span>{{carrello.id}}</div>
-                    <div>
-                      <label>name:
-                        <input [(ngModel)]="carrello.name" placeholder="name"/>
-                      </label>
-                    </div>
-                </div>
-              </div>
+    <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+      <div fxLayout="row wrap">
+        <div
+          *ngFor="let prodotto of carrelloData"
+          fxFlex="25"
+          fxFlex.md="33"
+          fxFlex.sm="50"
+          fxFlex.xs="80"
+          fxLayout="column"
+          style="padding: 5px;"
+        >
+          <!-- cards here -->
+          <mat-card class="mat-elevation-z1">
+            <img mat-card-image [src]="prodotto.path" />
+            <mat-card-title> {{ prodotto.name }} </mat-card-title>
+            <mat-card-content> {{ prodotto.name }} </mat-card-content>
+            <mat-card-footer class="form-group form-inline">
+               <!--<button  (click)="onChange(prodotto,+1)" color="primary">+</button>-->
+                <input [(ngModel)]="prodotto.num" placeholder="num"/>
+             <!--   <button  (click)="onChange(prodotto,-1)" color="primary">-</button>-->
 
-            </div>
+
+
+
+
+
+            </mat-card-footer>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
 
 
   </body>

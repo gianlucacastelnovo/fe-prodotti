@@ -7,9 +7,14 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProdottoService {
+
   // API path
   basepath = 'http://localhost:8080/prodotto/all';
-  constructor(private http: HttpClient) { }
+
+  baseprodottopath = 'http://localhost:8080/prodotto/';
+  putbasepath1 = 'http://localhost:8080/prodotto/put';
+  sincrobasepath = 'http://localhost:8080/prodotto/sincrocarrello';
+ constructor(private http: HttpClient) { }
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
@@ -36,4 +41,35 @@ export class ProdottoService {
       .get<Prodotto>(this.basepath)
       .pipe(retry(2), catchError(this.handleError));
   }
+
+  getProdottiCarrelloAll(): Observable<Prodotto> {
+    return this.http
+      .get<Prodotto>(this.baseprodottopath + 'carrello/all' )
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  getProdottiImCarrello( carrello ): Observable<Prodotto> {
+    return this.http
+      .get<Prodotto>(this.baseprodottopath + 'carrello/all/' + carrello.id)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  sincroCarrello( prodottoData ) {
+    return this.http.put(this.sincrobasepath, prodottoData)
+    .pipe(retry(2), catchError(this.handleError));
+  }
+
+
+  addProdotto(prodotto: Prodotto): Observable<Prodotto> {
+    const headers = { 'content-type': 'application/json'}
+    const body = JSON.stringify(prodotto);
+    console.log(body)
+    return this.http.post<Prodotto>(this.baseprodottopath + 'add', body,{'headers':headers})
+  }
+
+  addProductToCarrello(prodotto){
+    return this.http.put(this.baseprodottopath + 'put' , prodotto)
+    .pipe(retry(2), catchError(this.handleError));
+  }
+
 }

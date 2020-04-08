@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CarrelloSpesa } from './carrelloSpesa';
-import { CARRELLO} from './mock_carrello';
-import { CarrelloService } from '../services/carrello.service ';
-import { Carrello } from '../models/carrello';
-
+// import { CarrelloSpesa } from './carrelloSpesa';
+// import { CARRELLO} from './mock_carrello';
+// import { CarrelloService } from '../services/carrello.service';
+import { ProdottoService } from '../services/prodotto.service';
+import { Prodotto } from '../models/prodotto';
+// import { Carrello } from '../models/carrello';
 
 @Component({
   selector: 'app-carrello',
@@ -11,13 +12,11 @@ import { Carrello } from '../models/carrello';
   styleUrls: ['./carrello.component.css']
 })
 export class CarrelloComponent implements OnInit {
-
-
-  // carrellos = CARRELLO;Carrello
+ // carrellos = CARRELLO;Carrello
+ carrelloData: any;
 
   constructor(
-  // carrellos = CARRELLO;
-    public carrelloService: CarrelloService
+    public prodottoService: ProdottoService
   ) {
     this.carrelloData = [];
   }
@@ -30,7 +29,7 @@ export class CarrelloComponent implements OnInit {
 
   getAllProducts() {
 
-    this.carrelloService.getList().subscribe(response => {
+    this.prodottoService.getProdottiCarrelloAll().subscribe(response => {
       console.log(response);
       this.carrelloData = response;
     })

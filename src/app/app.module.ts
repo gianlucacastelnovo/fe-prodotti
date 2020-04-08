@@ -30,7 +30,7 @@ import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
 
-import { CarrelloComponent } from './carrello/carrello.component';
+
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -65,6 +65,7 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { ProdottoListComponent } from './prodotto-list/prodotto-list.component';
+import { CarrelloComponent } from './carrello/carrello.component';
 
 
 

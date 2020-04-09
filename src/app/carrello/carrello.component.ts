@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // import { CarrelloSpesa } from './carrelloSpesa';
 // import { CARRELLO} from './mock_carrello';
-// import { CarrelloService } from '../services/carrello.service';
-import { ProdottoService } from '../services/prodotto.service';
+import { CarrelloService } from '../services/carrello/carrelllo.service';
+import { ProdottoService } from '../services/prodotto/prodotto.service';
 import { Prodotto } from '../models/prodotto';
 // import { Carrello } from '../models/carrello';
 
@@ -13,25 +13,32 @@ import { Prodotto } from '../models/prodotto';
 })
 export class CarrelloComponent implements OnInit {
  // carrellos = CARRELLO;Carrello
- carrelloData: any;
+ prodottiIncarrello: any;
 
   constructor(
-    public prodottoService: ProdottoService
+    // public service: ProdottoService
+    public service: CarrelloService
   ) {
-    this.carrelloData = [];
+    this.prodottiIncarrello = [];
   }
 
   ngOnInit() {
     this.getAllProducts();
   }
 
-
-
   getAllProducts() {
 
-    this.prodottoService.getProdottiCarrelloAll().subscribe(response => {
+    this.service.getProdottiCarrelloAll().subscribe(response => {
       console.log(response);
-      this.carrelloData = response;
+      this.prodottiIncarrello = response;
     })
   }
+  getProdottiInCarrello(id) {
+
+    this.service.getProdottiInCarrello(id).subscribe(response => {
+      console.log(response);
+      this.prodottiIncarrello = response;
+    });
+  }
+
 }

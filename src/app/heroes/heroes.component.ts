@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
 
 import { HEROES} from './mock_heroes';
-import { ProdottoService } from '../services/prodotto.service';
+import { ProdottoService } from '../services/prodotto/prodotto.service';
 import { Prodotto } from '../models/prodotto';
 import { Carrello } from '../models/carrello';
 

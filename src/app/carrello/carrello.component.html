@@ -1,22 +1,29 @@
-<p>carrello works!</p>
+<p>Carrello</p>
 
 
 <head>
     <style>
 
       img{
-        height: 100%;
-        width: 100%;
+        height: 88%;
+        width: 88%;
 
         }
 
     </style>
   </head>
   <body>
-    <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
-      <div fxLayout="row wrap">
+
+
+
+    <button  (click)="getProdottiInCarrello( 1 )" color="primary">carrello1</button>
+    <button  (click)="getProdottiInCarrello( 2 )" color="primary">carrello2</button>
+
+
+    <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 80vh">
+
         <div
-          *ngFor="let prodotto of carrelloData"
+          *ngFor="let prodotto of prodottiIncarrello"
           fxFlex="25"
           fxFlex.md="33"
           fxFlex.sm="50"
@@ -30,9 +37,10 @@
             <mat-card-title> {{ prodotto.name }} </mat-card-title>
             <mat-card-content> {{ prodotto.name }} </mat-card-content>
             <mat-card-footer class="form-group form-inline">
-               <!--<button  (click)="onChange(prodotto,+1)" color="primary">+</button>-->
+              <button  (click)="onChange(prodotto,-1)" color="primary">-</button>
                 <input [(ngModel)]="prodotto.num" placeholder="num"/>
-             <!--   <button  (click)="onChange(prodotto,-1)" color="primary">-</button>-->
+                <button  (click)="onChange(prodotto,+1)" color="primary">+</button>
+
 
 
 
@@ -43,7 +51,7 @@
           </mat-card>
         </div>
       </div>
-    </div>
+
 
 
 

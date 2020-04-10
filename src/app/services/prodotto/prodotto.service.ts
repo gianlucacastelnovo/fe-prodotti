@@ -20,7 +20,9 @@ export class ProdottoService {
   handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
        console.error('An error occurred:', error.error.message);
+       alert(error.error.message);
     } else {
+      alert(error.status);
         console.error(`Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
     }
@@ -48,6 +50,13 @@ export class ProdottoService {
   addProductToCarrello(prodotto){
     return this.http.put(this.basepath + '/put' , prodotto)
     .pipe(retry(2), catchError(this.handleError));
+  }
+
+  sincroProdotto(prodotto: Prodotto): Observable<Prodotto> {
+    const headers = { 'content-type': 'application/json'}
+    const body = JSON.stringify(prodotto);
+    console.log(body)
+    return this.http.post<Prodotto>(this.basepath + '/sincro', body,{'headers':headers})
   }
 
 }

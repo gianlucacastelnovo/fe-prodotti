@@ -1,8 +1,7 @@
 // https://nehalist.io/working-with-models-in-angular/  .>sotto model
 import { Prodotto } from './prodotto';
-import { Deserializable } from './deserializable';
 
-export class ProdottoCarrello implements Deserializable{
+export class Carrello {
   id: number;
   name: string;
   description: string;
@@ -11,10 +10,4 @@ export class ProdottoCarrello implements Deserializable{
   num: number;
   prezzo: number;
   prodotto: Prodotto;
-
-
-  deserialize(input: any) {
-    Object.assign(this, input);
-    return this;
-  }
 }

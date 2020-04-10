@@ -3,53 +3,29 @@
 
 <head>
     <style>
-
-      img{
-        height: 88%;
-        width: 88%;
-
-        }
-
     </style>
   </head>
   <body>
+   <!-- <button  (click)="getPCInCarrello( 1 )" color="primary">carrello1</button>-->
+       <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+        <div fxLayout="row wrap">
+          <div *ngFor="let p of list" fxFlex="25"  fxFlex.md="33"  fxFlex.sm="50"  fxFlex.xs="80"  fxLayout="column"   style="padding: 5px;" >
 
-    <button  (click)="getProdottiInCarrello( 1 )" color="primary">carrello1</button>
-    <button  (click)="getProdottiInCarrello( 2 )" color="primary">carrello2</button>
+            <mat-card class="mat-elevation-z1">
+              <img mat-card-image [src]="p.prodotto.path" />
+              <mat-card-title> {{ p.prodotto.name }} </mat-card-title>
+              <mat-card-content> {{ p.prodotto.name }} </mat-card-content>
+              <mat-card-footer class="form-group form-inline">
+                <button  (click)="onChange(p,-1)" color="primary">-</button>
+                 <!--<button (click)="onAdd()" color="primary">+</button>-->
+                  <input [(ngModel)]="p.num" placeholder="num"/>
+                  <button  (click)="onChange(p,+1)" color="primary">+</button>
 
-
-    <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 80vh">
-
-        <div
-          *ngFor="let prodotto of prodottiIncarrello"
-          fxFlex="25"
-          fxFlex.md="33"
-          fxFlex.sm="50"
-          fxFlex.xs="80"
-          fxLayout="column"
-          style="padding: 5px;"
-        >
-          <!-- cards here -->
-          <mat-card class="mat-elevation-z1">
-            <img mat-card-image [src]="prodotto.path" />
-            <mat-card-title> {{ prodotto.name }} </mat-card-title>
-            <mat-card-content> {{ prodotto.name }} </mat-card-content>
-            <mat-card-footer class="form-group form-inline">
-              <button  (click)="onChange(prodotto,-1)" color="primary">-</button>
-                <input [(ngModel)]="prodotto.num" placeholder="num"/>
-                <button  (click)="onChange(prodotto,+1)" color="primary">+</button>
-
-
-
-
-
-
-
-            </mat-card-footer>
-          </mat-card>
+              </mat-card-footer>
+            </mat-card>
+          </div>
         </div>
       </div>
-
 
 
 

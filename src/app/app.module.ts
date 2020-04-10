@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { FormsModule , ReactiveFormsModule} from '@angular/forms'; // <-- NgModel lives here
 
 import { AppComponent } from './app.component';
 
-import { HeroesComponent } from './heroes/heroes.component';
+
 // tslint:disable-next-line: no-unused-expression
 import { FlexLayoutModule } from '@angular/flex-layout';
 //  import { MatToolbarModule } from '@angular/material';
@@ -31,7 +31,7 @@ import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
 
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import {
@@ -65,22 +65,44 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { ProdottoListComponent } from './prodotto-list/prodotto-list.component';
+
+
+import { ProdottoComponent } from './prodotti/prodotto.component';
 import { CarrelloComponent } from './carrello/carrello.component';
+/* Components */
+import { LogInComponent } from './components/log-in/log-in.component';
+import { RegisterComponent } from './components/register/register.component';
+
+
+/* Test  2 login */
+
+import { LoginComponent } from './components1/login/login.component';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import {  ErrorInterceptor } from './_helpers/error.interceptor';
+import { fakeBackendProvider } from './_helpers/fake-backend';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent,
+
     HomeComponent,
     AboutComponent,
     PrivacyComponent,
     TermsComponent,
     PageNotFoundComponent,
     SideMenuComponent,
-    CarrelloComponent,
+
+    ProdottoComponent,
     ProdottoListComponent,
+    CarrelloComponent,
+
+    LogInComponent,
+    RegisterComponent,
+
+    LoginComponent
 
 
 
@@ -88,6 +110,7 @@ import { CarrelloComponent } from './carrello/carrello.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule, // ADD
     MatToolbarModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
@@ -173,7 +196,13 @@ import { CarrelloComponent } from './carrello/carrello.component';
     MatFormFieldModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

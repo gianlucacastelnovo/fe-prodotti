@@ -1,4 +1,4 @@
-import { Hero } from './hero';
+import { Hero } from './prodotto';
 
 export const HEROES: Hero[] = [
  /* { id: 2,  number: 9, name: 'Pavesini', path:'https://www.supermercato24.it/asset/smne/196dc/793ca/97b93/194667888_img.jpg' },

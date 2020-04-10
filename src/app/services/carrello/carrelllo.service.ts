@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Prodotto } from '../../models/prodotto';
+import { ProdottoCarrello } from '../../models/carrello';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -39,23 +40,26 @@ export class CarrelloService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  getProdottiCarrelloAll(): Observable<Prodotto> {
-    return this.http
-      .get<Prodotto>(this.basepath + '/all' )
-      .pipe(retry(2), catchError(this.handleError));
-  }
+
 
   getProdottiInCarrello( id ): Observable<Prodotto> {
     return this.http
-      .get<Prodotto>(this.basepath + '/' + id)
+      .get<Prodotto>(this.basepath + '/p/' + id)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  sincroProdotto(prodotto: Prodotto): Observable<Prodotto> {
+  getPCInCarrello( id ): Observable<ProdottoCarrello> {
+    return this.http
+      .get<ProdottoCarrello>(this.basepath + '/pc/' + id)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+
+  sincroProdotto(pc: ProdottoCarrello): Observable<ProdottoCarrello> {
     const headers = { 'content-type': 'application/json'}
-    const body = JSON.stringify(prodotto);
+    const body = JSON.stringify(pc);
     console.log(body)
-    return this.http.post<Prodotto>(this.basepath + '/sincro', body,{'headers':headers})
+    return this.http.post<ProdottoCarrello>(this.basepath + '/sincro', body,{'headers':headers})
   }
 
 

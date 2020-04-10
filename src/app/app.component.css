@@ -30,3 +30,8 @@ body, input[type="text"], button {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }
+
+.navbar-nav > li:last-child
+{
+    float:right;
+}

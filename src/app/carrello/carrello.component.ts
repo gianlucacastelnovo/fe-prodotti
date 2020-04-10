@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { CarrelloService } from '../services/carrello/carrelllo.service';
 import { ProdottoService } from '../services/prodotto/prodotto.service';
 import { Prodotto } from '../models/prodotto';
-// import { Carrello } from '../models/carrello';
+import { ProdottoCarrello } from '../models/carrello';
 
 @Component({
   selector: 'app-carrello',
@@ -13,30 +13,33 @@ import { Prodotto } from '../models/prodotto';
 })
 export class CarrelloComponent implements OnInit {
  // carrellos = CARRELLO;Carrello
- prodottiIncarrello: any;
+ list: any;
 
   constructor(
     public service: CarrelloService
   ) {
-    this.prodottiIncarrello = [];
+    this.list = [];
   }
 
   ngOnInit() {
-    this.getAllProducts();
+    this.getPCInCarrello(1);
   }
 
-  getAllProducts() {
-    this.service.getProdottiCarrelloAll().subscribe(response => {
-      console.log(response);
-      this.prodottiIncarrello = response;
-    })
-  }
-  getProdottiInCarrello(id) {
+  // ALL Prod
+  getP(id) {
     this.service.getProdottiInCarrello(id).subscribe(response => {
       console.log(response);
-      this.prodottiIncarrello = response;
-    });
+      this.list = response;
+    })
   }
+
+  getPCInCarrello(id) {
+    this.service.getPCInCarrello(id).subscribe(response => {
+      console.log(response);
+      this.list = response;
+    })
+  }
+
 
   onChange(element: any, numero: number){
     element.num = element.num + numero;
@@ -45,5 +48,21 @@ export class CarrelloComponent implements OnInit {
       console.log(response);
     } )
   }
+/*
+  getProdottiInCarrelloMap(id) {
+    this.service.getProdottiInCarrello(id).subscribe(response => {
+      console.log(response);
+      this.list = response;
+      let cont = 0;
+      this.list.forEach(element => {
+        this.list[cont].id = element.id;
+        this.list[cont].num = element.num;
+        this.list[cont].name = element.name;
+        this.list[cont].path = element.path;
 
+        cont++;
+      });
+    });
+  }
+*/
 }

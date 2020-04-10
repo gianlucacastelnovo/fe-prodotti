@@ -2,32 +2,18 @@
 
 <head>
   <style>
-
-    img{
-      height: 100%;
-      width: 100%;
-
-      }
-
-
   </style>
 </head>
 <body>
-prova
 
+<!--
 <button  (click)="printCarrello()" color="primary">PRINT</button>
 <button  (click)="getProdottiInCarrello( carrello )" color="primary">GETPROD_INCARR</button>
-
+-->
 <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
     <div fxLayout="row wrap">
-      <div *ngFor="let prodotto of prodottiData"
-        fxFlex="25"
-        fxFlex.md="33"
-        fxFlex.sm="50"
-        fxFlex.xs="80"
-        fxLayout="column"
-        style="padding: 5px;"
-      >
+      <div *ngFor="let prodotto of prodottiData" fxFlex="25"  fxFlex.md="33"  fxFlex.sm="50"  fxFlex.xs="80"  fxLayout="column"   style="padding: 5px;" >
+
         <mat-card class="mat-elevation-z1">
           <img mat-card-image [src]="prodotto.path" />
           <mat-card-title> {{ prodotto.name }} </mat-card-title>

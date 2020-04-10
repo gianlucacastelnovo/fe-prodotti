@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from './hero';
+import { Hero } from './prodotto';
 
 import { HEROES} from './mock_heroes';
 import { ProdottoService } from '../services/prodotto/prodotto.service';
 import { Prodotto } from '../models/prodotto';
-import { Carrello } from '../models/carrello';
+import { ProdottoCarrello } from '../models/carrello';
 
 
 @Component({
   selector: 'app-heroes',
-  templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  templateUrl: './prodotto.component.html',
+  styleUrls: ['./prodotto.component.css']
 })
-export class HeroesComponent implements OnInit {
-
+export class ProdottoComponent implements OnInit {
+  resetProdotti: boolean;
   prodottiData: any;
   heroes = HEROES;
   carrello : any;
@@ -23,20 +23,27 @@ export class HeroesComponent implements OnInit {
     public prodottoService: ProdottoService
   ) {
     this.prodottiData = [];
-    this.carrello = new Carrello();
+    this.carrello = new ProdottoCarrello();
     this.carrello.id = 2;
   }
 
   ngOnInit() {
+    this.resetProdotti = true;
     this.getAllProducts();
 
   }
 
   getAllProducts() {
+
     this.prodottoService.getList().subscribe(response => {
         console.log(response);
-        this.prodottiData = response;
-      } )
+        // if ( this.resetProdotti )
+        {
+             this.prodottiData = response;
+        }
+      } );
+    this.resetProdotti = false;
+
     }
 
 
@@ -52,7 +59,7 @@ export class HeroesComponent implements OnInit {
   onChange(element: any, numero: number){
     element.num = element.num + numero;
     // tslint:disable-next-line: whitespace
-    if( element.num < 0 ) element.num = 0 ;
+    if( element.num < 0 ) { element.num = 0 ; }
     console.log('Add button is clicked!');
 
     this.prodottoService.sincroProdotto(element).subscribe(response => {

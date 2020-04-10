@@ -51,5 +51,13 @@ export class CarrelloService {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  sincroProdotto(prodotto: Prodotto): Observable<Prodotto> {
+    const headers = { 'content-type': 'application/json'}
+    const body = JSON.stringify(prodotto);
+    console.log(body)
+    return this.http.post<Prodotto>(this.basepath + '/sincro', body,{'headers':headers})
+  }
+
+
 
 }

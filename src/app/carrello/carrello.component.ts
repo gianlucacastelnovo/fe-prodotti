@@ -16,7 +16,6 @@ export class CarrelloComponent implements OnInit {
  prodottiIncarrello: any;
 
   constructor(
-    // public service: ProdottoService
     public service: CarrelloService
   ) {
     this.prodottiIncarrello = [];
@@ -27,18 +26,24 @@ export class CarrelloComponent implements OnInit {
   }
 
   getAllProducts() {
-
     this.service.getProdottiCarrelloAll().subscribe(response => {
       console.log(response);
       this.prodottiIncarrello = response;
     })
   }
   getProdottiInCarrello(id) {
-
     this.service.getProdottiInCarrello(id).subscribe(response => {
       console.log(response);
       this.prodottiIncarrello = response;
     });
+  }
+
+  onChange(element: any, numero: number){
+    element.num = element.num + numero;
+    if( element.num < 0 ) element.num = 0 ;
+    this.service.sincroProdotto(element).subscribe(response => {
+      console.log(response);
+    } )
   }
 
 }

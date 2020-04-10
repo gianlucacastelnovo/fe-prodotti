@@ -41,11 +41,11 @@ export class HeroesComponent implements OnInit {
 
 
   getProdottiInCarrello( carrello ) {
-
-    this.prodottoService.getProdottiImCarrello( carrello ).subscribe(response => {
+/*
+    this.prodottoService.getProdottiInCarrello( carrello ).subscribe(response => {
       console.log(response);
       this.prodottiData = response;
-    } )
+    } )*/
   }
 
 
@@ -55,7 +55,7 @@ export class HeroesComponent implements OnInit {
     if( element.num < 0 ) element.num = 0 ;
     console.log('Add button is clicked!');
 
-    this.prodottoService.addProdotto(element).subscribe(response => {
+    this.prodottoService.sincroProdotto(element).subscribe(response => {
       console.log(response);
      // this.prodottiData = response;
     } )

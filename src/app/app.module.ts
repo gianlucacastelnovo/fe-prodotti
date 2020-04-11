@@ -84,6 +84,21 @@ import { fakeBackendProvider } from './_helpers/fake-backend';
 
 
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {CdkTreeModule} from '@angular/cdk/tree';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import {MatTreeModule} from '@angular/material/tree';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,6 +139,8 @@ import { fakeBackendProvider } from './_helpers/fake-backend';
       MatAutocompleteModule,
       MatButtonModule,
       MatButtonToggleModule,
+      MatBadgeModule,
+
       MatCardModule,
       MatCheckboxModule,
       MatChipsModule,

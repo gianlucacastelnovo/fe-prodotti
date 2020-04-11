@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import {MatBadgeModule} from '@angular/material/badge';
 import { AuthenticationService } from '../app/_services/authentication.service';
 import { User } from '../app/models/user';
 

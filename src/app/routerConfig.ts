@@ -16,6 +16,10 @@ import { LoginComponent } from './components1/login/login.component';
 import { AuthGuard } from './_helpers/auth.guard';
 
 
+// TEST
+// import { AlertCookiesComponent } from './test/popup/alert-cookies.component';
+
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
@@ -33,6 +37,14 @@ const routes: Routes = [
 
   /* { path: '',   redirectTo: '/home', pathMatch: 'full' },*/
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+
+/**
+ *
+ * Test ALertCookies
+ *
+ */
+// { path: 'test/popup/alert-cookies', component: AlertCookiesComponent },
+
   { path: '**', redirectTo: '' },
 
 

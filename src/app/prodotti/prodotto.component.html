@@ -12,17 +12,31 @@
 -->
 <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
     <div fxLayout="row wrap">
-      <div *ngFor="let prodotto of prodottiData" fxFlex="25"  fxFlex.md="33"  fxFlex.sm="50"  fxFlex.xs="80"  fxLayout="column"   style="padding: 5px;" >
+      <div *ngFor="let prodotto of prodottiData" fxFlex="25"  fxFlex.md="33"  fxFlex.sm="50"  fxFlex.xs="50"  fxLayout="column"   style="padding: 5px;" >
 
-        <mat-card class="mat-elevation-z1">
-          <img mat-card-image [src]="prodotto.path" />
-          <mat-card-title> {{ prodotto.name }} </mat-card-title>
-          <mat-card-content> {{ prodotto.name }} </mat-card-content>
-          <mat-card-footer class="form-group form-inline">
-            <button  (click)="onChange(prodotto,-1)" color="primary">-</button>
-             <!--<button (click)="onAdd()" color="primary">+</button>-->
-              <input [(ngModel)]="prodotto.num" placeholder="num"/>
-              <button  (click)="onChange(prodotto,+1)" color="primary">+</button>
+        <mat-card class="mat-elevation-z1"><!--class="mat-elevation-z1"-->
+
+            <div flex-gt-sm="20" layout-align="center center" layout="column">
+              <img mat-card-image [src]="prodotto.path" flex width="140">
+                </div>
+              <mat-card-title> <div [ngStyle]="{ 'font-size': '15px', 'font-weight': 'bold'}">{{ prodotto.name }}
+              </div></mat-card-title>
+              <mat-card-content> <div [ngStyle]="{'color': 'gray', 'font-size': '11px'}">{{ prodotto.description }}
+              </div></mat-card-content>
+
+          <mat-card-footer class="form-group d-flex">
+            <div class="">
+              <button  mat-button color="primary"(click)="onChange(prodotto,-1)" >-</button>
+            </div>
+
+
+            <div class="">
+              <input type="text" size="3" minLength="0" maxLength="3" class="form-control" [(ngModel)]="prodotto.num" placeholder="0">
+            </div>
+
+            <div class="">
+              <button  mat-button color="primary"(click)="onChange(prodotto,1)" >+</button>
+            </div>
 
           </mat-card-footer>
         </mat-card>

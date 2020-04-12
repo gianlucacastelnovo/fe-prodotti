@@ -95,6 +95,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatTreeModule} from '@angular/material/tree';
+import { AlertCookiesComponent } from './test/popup/alert-cookies/alert-cookies.component';
 
 
 
@@ -117,7 +118,9 @@ import {MatTreeModule} from '@angular/material/tree';
     LogInComponent,
     RegisterComponent,
 
-    LoginComponent
+    LoginComponent,
+
+    AlertCookiesComponent
 
 
 

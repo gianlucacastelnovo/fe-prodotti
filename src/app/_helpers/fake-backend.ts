@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
-
+import { ApiService } from '../services/api.service.';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 
 const users: User[] = [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' }];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
+
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const { url, method, headers, body } = request;
 
@@ -20,6 +22,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             .pipe(dematerialize());
 
         function handleRoute() {
+
+
             switch (true) {
                 case url.endsWith('/users/authenticate') && method === 'POST':
                     return authenticate();
@@ -35,7 +39,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         function authenticate() {
             const { username, password } = body;
+
+            // const authService = new AuthenticationService();
+
+
             const user = users.find(x => x.username === username && x.password === password);
+
+
+
             if (!user) return error('Username or password is incorrect');
             return ok({
                 id: user.id,
@@ -74,6 +85,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 export let fakeBackendProvider = {
     // use fake backend in place of Http service for backend-less development
     provide: HTTP_INTERCEPTORS,
-    useClass: FakeBackendInterceptor,
+     useClass: FakeBackendInterceptor,
+
     multi: true
 };

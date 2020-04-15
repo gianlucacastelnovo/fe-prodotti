@@ -42,35 +42,15 @@
         <button mat-raised-button color="primary" routerLink="register" routerLinkActive="active"
         matBadge="8" matBadgePosition="before" matBadgeColor="accent">
 
-    </button>
+    </button> </a>
+    <a class="nav-item nav-link" routerLink="about">MenuTest</a>
+    <a class="nav-item nav-link" routerLink="geolocalize"> <mat-icon> add_location</mat-icon></a>
 
 
-
-      </a>
       <!--
       <a class="nav-item nav-link" routerLink="test/popup/alert-cookies">test/popup/alert-cookies</a>-->
    </div>
 </nav>
 <div class="container">
   <router-outlet></router-outlet>
-  <p>
-    <span matBadge="4" matBadgeOverlap="false">Text with a badge</span>
-  </p>
-
-  <p>
-    Button with a badge on the left
-    <button mat-raised-button color="primary"
-        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
-      Action
-    </button>
-  </p>
-
-  <p>
-    Icon with a badge
-    <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
-      <!-- Include text description of the icon's meaning for screen-readers -->
-      <span class="cdk-visually-hidden">
-        Example with a home icon with overlaid badge showing the number 15
-      </span>
-  </p>
 </div>

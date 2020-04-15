@@ -64,10 +64,11 @@ import {
   MatFormFieldModule,
   MatToolbarModule
 } from '@angular/material';
+
 import { ProdottoListComponent } from './prodotto-list/prodotto-list.component';
-
-
 import { ProdottoComponent } from './prodotti/prodotto.component';
+
+
 import { CarrelloComponent } from './carrello/carrello.component';
 /* Components */
 import { LogInComponent } from './components/log-in/log-in.component';
@@ -81,7 +82,8 @@ import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import {  ErrorInterceptor } from './_helpers/error.interceptor';
 import { fakeBackendProvider } from './_helpers/fake-backend';
 
-
+  /* Import the module*/
+import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -135,7 +137,11 @@ import { AlertCookiesComponent } from './test/popup/alert-cookies/alert-cookies.
     ModalModule.forRoot(),
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
+
+    NgMaterialMultilevelMenuModule , // Menu
+
     FlexLayoutModule,
+
 
 
       // Material

@@ -5,6 +5,9 @@ import { HEROES} from './mock_heroes';
 import { ProdottoService } from '../services/prodotto/prodotto.service';
 import { Prodotto } from '../models/prodotto';
 import { ProdottoCarrello } from '../models/carrello';
+import { ThemePalette } from '@angular/material';
+
+import { ClickColorDirective } from '../prodotti/click-color.directive';
 
 
 @Component({
@@ -17,6 +20,7 @@ export class ProdottoComponent implements OnInit {
   prodottiData: any;
   heroes = HEROES;
   carrello : any;
+  buttonColor: ThemePalette = 'primary';
   // apiService: ApiService;
 
   constructor(

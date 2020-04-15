@@ -5,7 +5,9 @@
   </style>
 </head>
 <body>
-
+  <div clickColor color="'green'">
+    Batman !!!
+   </div>
 <!--
 <button  (click)="printCarrello()" color="primary">PRINT</button>
 <button  (click)="getProdottiInCarrello( carrello )" color="primary">GETPROD_INCARR</button>
@@ -14,28 +16,42 @@
     <div fxLayout="row wrap">
       <div *ngFor="let prodotto of prodottiData" fxFlex="25"  fxFlex.md="33"  fxFlex.sm="50"  fxFlex.xs="50"  fxLayout="column"   style="padding: 5px;" >
 
-        <mat-card class="mat-elevation-z1"><!--class="mat-elevation-z1"-->
+        <mat-card class="vader-product mat-elevation-z1"><!--class="mat-elevation-z1"-->
+          <mat-card-header>
+           <!-- <div mat-card-avatar class="example-header-image"></div>-->
+           <!-- <mat-card-title>Mele</mat-card-title>-->
+          <!--  <mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
+          </mat-card-header>
 
-            <div flex-gt-sm="20" layout-align="center center" layout="column">
-              <img mat-card-image [src]="prodotto.path" flex width="140">
-                </div>
-              <mat-card-title> <div [ngStyle]="{ 'font-size': '15px', 'font-weight': 'bold'}">{{ prodotto.name }}
+              <mat-card-title>
+                <div flex-gt-sm="20" layout-align="center center" layout="column">
+                  <img mat-card-image [src]="prodotto.path" flex width="20%">
+                    </div>
+
+
+                <div [ngStyle]="{ 'font-size': '15px', 'font-weight': 'bold'}">{{ prodotto.name }}
               </div></mat-card-title>
-              <mat-card-content> <div [ngStyle]="{'color': 'gray', 'font-size': '11px'}">{{ prodotto.description }}
+              <mat-card-content> <div [ngStyle]="{'color': 'gray', 'font-size': '12px'}">{{ prodotto.description }}
+                <mat-card-subtitle>{{ prodotto.description }}</mat-card-subtitle>
+
               </div></mat-card-content>
 
-          <mat-card-footer class="form-group d-flex">
-            <div class="">
-              <button  mat-button color="primary"(click)="onChange(prodotto,-1)" >-</button>
+          <mat-card-footer class="form-group d-flex" >
+            <div class="p-remove">
+              <button  mat-button color="primary"(click)="onChange(prodotto,-1)" [color]="buttonColor" (click)="buttonColor = 'primary'" (mouseout)="buttonColor = 'primary'"
+
+              ><mat-icon>remove</mat-icon></button>
             </div>
 
 
             <div class="">
-              <input type="text" size="3" minLength="0" maxLength="3" class="form-control" [(ngModel)]="prodotto.num" placeholder="0">
+              <input type="text" size="3" minLength="0" maxLength="3" class="form-control-add" [(ngModel)]="prodotto.num" placeholder="0">
             </div>
 
-            <div class="">
-              <button  mat-button color="primary"(click)="onChange(prodotto,1)" >+</button>
+            <div  class="p-add">
+              <button  mat-button color="primary"(click)="onChange(prodotto,+1)" [color]="buttonColor" (click)="buttonColor = 'primary'" (mouseout)="buttonColor = 'primary'">
+                <mat-icon >add</mat-icon>
+              </button>
             </div>
 
           </mat-card-footer>

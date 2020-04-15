@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service.';
+import { ProdottoService } from '../services/prodotto/prodotto.service';
 
 @Component({
   selector: 'app-prodotto-list',
@@ -11,17 +11,17 @@ export class ProdottoListComponent implements OnInit {
   prodottiData: any;
 
   constructor(
-    public apiService: ApiService
+    public service: ProdottoService
   ) {
     this.prodottiData = [];
   }
    ngOnInit() {
-    this.getAllProducts();
+    this.getList();
   }
 
-  getAllProducts() {
+  getList() {
 
-    this.apiService.getList().subscribe(response => {
+    this.service.getList().subscribe(response => {
       console.log(response);
       this.prodottiData = response;
     })

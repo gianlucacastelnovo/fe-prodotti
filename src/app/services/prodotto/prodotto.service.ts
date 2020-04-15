@@ -8,7 +8,7 @@ import { retry, catchError } from 'rxjs/operators';
 })
 export class ProdottoService {
   basepath = 'http://localhost:8080/prodotto';
-  sincrobasepath   = 'http://localhost:8080/prodotto/sincrocarrello';
+//  sincrobasepath   = 'http://localhost:8080/prodotto/sincrocarrello';
  constructor(private http: HttpClient) { }
 
   httpOptions = {
@@ -36,7 +36,7 @@ export class ProdottoService {
   }
 
   sincroCarrello( prodottoData ) {
-    return this.http.put(this.sincrobasepath, prodottoData)
+    return this.http.put(this.basepath + 'sincro', prodottoData)
     .pipe(retry(2), catchError(this.handleError));
   }
 

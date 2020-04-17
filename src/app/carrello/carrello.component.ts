@@ -25,15 +25,7 @@ export class CarrelloComponent implements OnInit {
     this.getPCInCarrello(1);
   }
 
-  // ALL Prod
-  getP(id) {
-    this.service.getProdottiInCarrello(id).subscribe(response => {
-      console.log(response);
-      this.list = response;
-    })
-  }
-
-  getPCInCarrello(id) {
+   getPCInCarrello(id) {
     this.service.getPCInCarrello(id).subscribe(response => {
       console.log(response);
       this.list = response;

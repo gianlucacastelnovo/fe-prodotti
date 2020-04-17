@@ -13,16 +13,18 @@ import { User } from '../app/models/user';
 export class AppComponent {
   title = 'Elenco Alimenti';
   currentUser: User;
-
+  numCarrello: number;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
 ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+   // this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
 }
 
 toggleNavbar(){
-
+  this.currentUser = this.authenticationService.currentUserValue;
 }
 logout() {
   this.authenticationService.logout();

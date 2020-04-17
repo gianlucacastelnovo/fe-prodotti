@@ -3,6 +3,7 @@ import { Prodotto } from './prodotto';
 import { Deserializable } from './deserializable';
 
 export class ProdottoCarrello implements Deserializable{
+  [x: string]: any;
   id: number;
   name: string;
   description: string;

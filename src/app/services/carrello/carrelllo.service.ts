@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Prodotto } from '../../models/prodotto';
 import { ProdottoCarrello } from '../../models/carrello';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { User } from '../../models/user';
+import { Observable, throwError, of } from 'rxjs';
+import { retry, catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarrelloService {
+  [x: string]: any;
 
   basepath = 'http://localhost:8080/carrello';
-
+  user: User;
+  p: Observable<ProdottoCarrello> ;
+  p1: ProdottoCarrello[];
  constructor(private http: HttpClient) { }
   // Http Options
   httpOptions = {
@@ -34,20 +38,6 @@ export class CarrelloService {
     return throwError('Something bad happened; please try again later.');
   }
 
-  getList(): Observable<Prodotto> {
-    return this.http
-      .get<Prodotto>(this.basepath)
-      .pipe(retry(2), catchError(this.handleError));
-  }
-
-
-
-  getProdottiInCarrello( id ): Observable<Prodotto> {
-    return this.http
-      .get<Prodotto>(this.basepath + '/p/' + id)
-      .pipe(retry(2), catchError(this.handleError));
-  }
-
   getPCInCarrello( id ): Observable<ProdottoCarrello> {
     return this.http
       .get<ProdottoCarrello>(this.basepath + '/pc/' + id)
@@ -56,10 +46,20 @@ export class CarrelloService {
 
 
   sincroProdotto(pc: ProdottoCarrello): Observable<ProdottoCarrello> {
+
+
+
     const headers = { 'content-type': 'application/json'}
     const body = JSON.stringify(pc);
-    console.log(body)
-    return this.http.post<ProdottoCarrello>(this.basepath + '/sincro', body,{'headers':headers})
+    console.log(body);
+
+    this.p = this.http.post<ProdottoCarrello>(this.basepath + '/sincro', body,{'headers':headers});
+
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+
+
+     localStorage.setItem('currentUser', JSON.stringify(this.user));
+    return this.p;
   }
 
 

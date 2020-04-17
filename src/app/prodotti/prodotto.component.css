@@ -83,13 +83,6 @@ img{
   white-space: nowrap;
 }
 
-.test{
-    left: 0;
-    position: relative;
-    text-align: center;
-    bottom: 0;
-    width: 100%;
-}
  /* Input conteggio prodotti*/
 .form-control-add {
   text-align: center;
@@ -99,7 +92,7 @@ img{
   line-height: 1.5;
   background-color: #fff;
   border: 1px solid #ced4da;
-  border-radius: 3rem;
+  border-radius: 0rem;
   /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
 }
 
@@ -110,3 +103,11 @@ img{
 	overflow: auto; /** <-- Add this **/
   display: inline;
 }
+/** Per attaccae footer in basso**/
+.mat-card-footer{
+	position: absolute;/** <-- Add this **/
+  margin: 0px;
+  bottom: 1px;
+}
+
+

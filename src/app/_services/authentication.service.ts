@@ -34,7 +34,7 @@ export class AuthenticationService {
         `body was: ${error.error}`);
     }
     // return an observable with a user-facing error message
-    return throwError('Something bad happened; please try again later.');
+    return throwError('Impossibile accedere utente non abilitato');
   }
 
 
@@ -44,6 +44,7 @@ export class AuthenticationService {
       const user = new User();
       user.username = username;
       user.password = password;
+      user.idPartner = null;
       user.token = '';
       const body = JSON.stringify(user);
       console.log(body);

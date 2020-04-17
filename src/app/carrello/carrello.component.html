@@ -1,31 +1,53 @@
-<p>Carrello</p>
-
 
 <head>
     <style>
     </style>
   </head>
   <body>
-   <!-- <button  (click)="getPCInCarrello( 1 )" color="primary">carrello1</button>-->
-       <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+      <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
         <div fxLayout="row wrap">
-          <div *ngFor="let p of list" fxFlex="25"  fxFlex.md="33"  fxFlex.sm="50"  fxFlex.xs="80"  fxLayout="column"   style="padding: 5px;" >
 
-            <mat-card class="mat-elevation-z1">
-              <img mat-card-image [src]="p.prodotto.path" />
-              <mat-card-title> {{ p.prodotto.name }} </mat-card-title>
-              <mat-card-content> {{ p.prodotto.name }} </mat-card-content>
-              <mat-card-footer class="form-group form-inline">
-                <button  (click)="onChange(p,-1)" color="primary">-</button>
-                 <!--<button (click)="onAdd()" color="primary">+</button>-->
-                  <input [(ngModel)]="p.num" placeholder="num"/>
-                  <button  (click)="onChange(p,+1)" color="primary">+</button>
+          <div *ngFor="let p of list" fxFlex="25"  fxFlex.md="33"  fxFlex.sm="50"  fxFlex.xs="50"  fxLayout="column"   style="padding: 5px;" >
+
+            <mat-card class="vader-product mat-elevation-z1"><!--class="mat-elevation-z1"-->
+              <mat-card-header>
+              </mat-card-header>
+
+                  <mat-card-title>
+                    <div flex-gt-sm="20" layout-align="center center" layout="column">
+                      <img mat-card-image [src]="p.prodotto.path" flex width="20%">
+                        </div>
+
+
+                    <div [ngStyle]="{ 'font-size': '15px', 'font-weight': 'bold'}">{{ p.prodotto.name }}
+                  </div></mat-card-title>
+                  <mat-card-content> <div [ngStyle]="{'color': 'gray', 'font-size': '12px'}">{{ p.prodotto.description }}
+                    <mat-card-subtitle>{{ p.prodotto.description }}</mat-card-subtitle>
+
+                  </div></mat-card-content>
+
+              <mat-card-footer class="form-group d-flex" >
+                <div class="p-remove">
+                  <button  mat-button color="primary"(click)="onChange(p,-1)"  ><mat-icon>remove</mat-icon></button>
+                </div>
+
+
+                <div class="">
+                  <input type="text" size="3" minLength="0" maxLength="3" class="form-control-add" [(ngModel)]="p.num" placeholder="0">
+                </div>
+
+                <div  class="p-add">
+                  <button  mat-button color="primary"(click)="onChange(p,+1)" >
+                    <mat-icon >add</mat-icon>
+                  </button>
+                </div>
 
               </mat-card-footer>
             </mat-card>
           </div>
         </div>
       </div>
+
 
 
 

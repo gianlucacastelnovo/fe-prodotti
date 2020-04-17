@@ -75,6 +75,9 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { RegisterComponent } from './components/register/register.component';
 
 
+import { UserSettingsComponent } from './components/usersettings/usersettings.component';
+
+
 /* Test  2 login */
 
 import { LoginComponent } from './components1/login/login.component';
@@ -121,7 +124,7 @@ import { AlertCookiesComponent } from './test/popup/alert-cookies/alert-cookies.
     RegisterComponent,
 
     LoginComponent,
-
+    UserSettingsComponent ,
     AlertCookiesComponent
 
 

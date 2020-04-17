@@ -47,11 +47,6 @@ export class ProdottoService {
     return this.http.post<Prodotto>(this.basepath + '/add', body,{'headers':headers})
   }
 
-  addProductToCarrello(prodotto){
-    return this.http.put(this.basepath + '/put' , prodotto)
-    .pipe(retry(2), catchError(this.handleError));
-  }
-
   sincroProdotto(prodotto: Prodotto): Observable<Prodotto> {
     const headers = { 'content-type': 'application/json'}
     const body = JSON.stringify(prodotto);

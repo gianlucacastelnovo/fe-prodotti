@@ -5,22 +5,16 @@
   </style>
 </head>
 <body>
-  <div clickColor color="'green'">
-    Batman !!!
-   </div>
-<!--
-<button  (click)="printCarrello()" color="primary">PRINT</button>
-<button  (click)="getProdottiInCarrello( carrello )" color="primary">GETPROD_INCARR</button>
--->
+  <div class="spinner-container" *ngIf="prodottiData.loading$ | async">
+    <mat-spinner></mat-spinner>
+</div>
 <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
     <div fxLayout="row wrap">
+
       <div *ngFor="let prodotto of prodottiData" fxFlex="25"  fxFlex.md="33"  fxFlex.sm="50"  fxFlex.xs="50"  fxLayout="column"   style="padding: 5px;" >
 
         <mat-card class="vader-product mat-elevation-z1"><!--class="mat-elevation-z1"-->
           <mat-card-header>
-           <!-- <div mat-card-avatar class="example-header-image"></div>-->
-           <!-- <mat-card-title>Mele</mat-card-title>-->
-          <!--  <mat-card-subtitle>Dog Breed</mat-card-subtitle>-->
           </mat-card-header>
 
               <mat-card-title>

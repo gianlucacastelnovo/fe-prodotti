@@ -6,7 +6,8 @@ import { ApiService } from '../services/api.service.';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 
-const users: User[] = [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' }];
+const users: User[] =
+ [{ id: 1, username: 'test', password: 'test', firstName: 'Test', lastName: 'User' , idPartner: '', deserialize: null }];
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {

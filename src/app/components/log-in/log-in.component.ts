@@ -9,6 +9,7 @@ export class LogInComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+   // localStorage.clear();
   }
 
 }

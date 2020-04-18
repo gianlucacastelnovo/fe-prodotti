@@ -1,0 +1,52 @@
+<!--
+
+<header>
+  <style>
+      img {
+          width: 10%;
+          height: 10%;
+
+      }
+  </style>
+
+</header>
+
+
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': true  }">
+    <ul class="navbar-nav nav-item ">
+
+      <li class="active">  <a class="nav-link" routerLink="" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>   </li>
+
+      <li>
+        <a class="nav-link"  routerLink="carrello" routerLinkActive="active">Carrello
+          <button mat-raised-button color="primary" routerLink="carrello" routerLinkActive="active" matBadge="{{getCount()}}" matBadgePosition="before" matBadgeColor="accent"></button>
+         </a>
+      </li>
+        <li class="topnav-right">
+            <a class="nav-link" (click)="logout()" routerLinkActive="active">Logout</a>
+      </li>
+     </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!currentUser">
+  <div class="navbar-nav">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link"  routerLink="register" routerLinkActive="active">Registrati
+        <button mat-raised-button color="primary" routerLink="register" routerLinkActive="active"
+        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+
+    </button> </a>
+    <a class="nav-item nav-link" routerLink="usersettings">UserSetting</a>
+   </div>
+</nav>
+<div class="container">
+  <div *ngFor="let message of messages" class="alert alert-success">{{message.text}}</div>
+  <router-outlet></router-outlet>
+</div>
+-->

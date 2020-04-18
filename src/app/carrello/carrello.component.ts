@@ -27,34 +27,26 @@ export class CarrelloComponent implements OnInit {
 
    getPCInCarrello(id) {
     this.service.getPCInCarrello(id).subscribe(response => {
-      console.log(response);
       this.list = response;
-    })
-  }
+     });
 
+
+  }
 
   onChange(element: any, numero: number){
     element.num = element.num + numero;
     if( element.num < 0 ) element.num = 0 ;
-    this.service.sincroProdotto(element).subscribe(response => {
-      console.log(response);
-    } )
-  }
-/*
-  getProdottiInCarrelloMap(id) {
-    this.service.getProdottiInCarrello(id).subscribe(response => {
-      console.log(response);
+    this.service.sincroPC(element).subscribe(response => {
       this.list = response;
-      let cont = 0;
-      this.list.forEach(element => {
-        this.list[cont].id = element.id;
-        this.list[cont].num = element.num;
-        this.list[cont].name = element.name;
-        this.list[cont].path = element.path;
+    } );
 
-        cont++;
-      });
-    });
   }
-*/
+  sendMessage(): void {
+    this.service.sendMessage('Message from Home Component to App Component!');
+}
+
+clearMessages(): void {
+    this.service.clearMessages();
+}
+
 }

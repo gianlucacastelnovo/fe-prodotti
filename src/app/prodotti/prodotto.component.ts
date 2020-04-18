@@ -3,6 +3,7 @@ import { Hero } from './prodotto';
 
 import { HEROES} from './mock_heroes';
 import { ProdottoService } from '../services/prodotto/prodotto.service';
+import { CarrelloService } from '../services/carrello/carrelllo.service';
 import { Prodotto } from '../models/prodotto';
 import { ProdottoCarrello } from '../models/carrello';
 import { ThemePalette, MatTableDataSource } from '@angular/material';
@@ -27,7 +28,8 @@ export class ProdottoComponent implements OnInit {
 
 
   constructor(
-    public prodottoService: ProdottoService
+    public prodottoService: ProdottoService,
+    public carrelloService: CarrelloService
   ) {
     this.prodottiData = [];
     this.carrello = new ProdottoCarrello();
@@ -43,37 +45,29 @@ export class ProdottoComponent implements OnInit {
   getAllProducts() {
 
     this.prodottoService.getList().subscribe(response => {
-        console.log(response);
+       // console.log(response);
         // if ( this.resetProdotti )
-        {
+
              this.prodottiData = response;
              this.dataSource = new MatTableDataSource<Prodotto>(response['results']);
              this.dataSource.paginator = this.paginator;
-        }
+
       } );
+
+      this.carrelloService.getPCInCarrello(1);
 
 
     }
 
-
-  getProdottiInCarrello( carrello ) {
-/*
-    this.prodottoService.getProdottiInCarrello( carrello ).subscribe(response => {
-      console.log(response);
-      this.prodottiData = response;
-    } )*/
-  }
-
-
   onChange(element: any, numero: number){
     element.num = element.num + numero;
-    // tslint:disable-next-line: whitespace
-    if( element.num < 0 ) { element.num = 0 ; }
+      if( element.num < 0 ) { element.num = 0 ; }
 
-    this.prodottoService.sincroProdotto(element).subscribe(response => {
-      console.log(response);
-     // this.prodottiData = response;
-    } )
+    this.prodottoService.sincroProdotto(element).subscribe(response => {   this.prodottiData = response;     } );
+
+    this.carrelloService.getPCInCarrello(1);
+
+
   }
 
 

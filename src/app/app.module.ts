@@ -18,7 +18,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import routes from './routerConfig';
-import { SideMenuComponent } from './side-menu/side-menu.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {A11yModule} from '@angular/cdk/a11y';
 import {BidiModule} from '@angular/cdk/bidi';
@@ -72,22 +72,21 @@ import { ProdottoComponent } from './prodotti/prodotto.component';
 import { CarrelloComponent } from './carrello/carrello.component';
 /* Components */
 import { LogInComponent } from './components/log-in/log-in.component';
-import { RegisterComponent } from './components/register/register.component';
+import { SideMenuComponent } from './side-menu/side-menu.component';
+
+
 
 
 import { UserSettingsComponent } from './components/usersettings/usersettings.component';
 
 
-/* Test  2 login */
 
 import { LoginComponent } from './components1/login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import {  ErrorInterceptor } from './_helpers/error.interceptor';
 import { fakeBackendProvider } from './_helpers/fake-backend';
 
-  /* Import the module*/
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
-
 
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ScrollingModule} from '@angular/cdk/scrolling';
@@ -101,6 +100,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatTreeModule} from '@angular/material/tree';
 import { AlertCookiesComponent } from './test/popup/alert-cookies/alert-cookies.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 

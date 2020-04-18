@@ -1,55 +1,89 @@
-
-
 <header>
-  <style>
-      img {
-          width: 10%;
-          height: 10%;
-
-      }
-  </style>
-
 </header>
 
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <!--<a class="navbar-brand" routerLink="">Angular Routing</a>-->
-  <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" [ngClass]="{ 'show': true  }">  <!-- { 'show': navbarOpen  }-->
-    <ul class="navbar-nav">
+<mat-toolbar color="primary" *ngIf="currentUser">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon><!-- -->
+    </button>
+    <h1>BresciaShop</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/Home'"> Prodotti </a>
+      <a class="nav-link"  routerLink="carrello" routerLinkActive="active">Carrello
+        <button mat-raised-button color="primary" routerLink="carrello" routerLinkActive="active" matBadge="{{getCount()}}" matBadgePosition="before" matBadgeColor="accent"></button>
+       </a>
+ <!--  <a mat-button [routerLink]="'/contacts'"> Conttatti </a>-->
+      <a mat-button  class="nav-link" (click)="logout()"  [routerLink]=""routerLinkActive="active">Logout</a>
+    </div>
+  </mat-toolbar-row>
 
-      <li class="nav-item active">
-        ----{{currentUser.num}}----
-        <a class="nav-link" routerLink="" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item"        matBadgeColor="accent">
-           <a class="nav-link"  routerLink="carrello" routerLinkActive="active" matBadge="15" matBadgeColor="info" matBadgePosition="before">Carrello</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="logout()" routerLinkActive="active">Logout</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!currentUser">
-  <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link"  routerLink="register" routerLinkActive="active">Registrati
-        <button mat-raised-button color="primary" routerLink="register" routerLinkActive="active"
-        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
-
-    </button> </a>
-    <a class="nav-item nav-link" routerLink="usersettings">UserSetting</a>
- <!--   <a class="nav-item nav-link" routerLink="geolocalize"> <mat-icon> add_location</mat-icon></a>-->
-
-
-      <!--
-      <a class="nav-item nav-link" routerLink="test/popup/alert-cookies">test/popup/alert-cookies</a>-->
-   </div>
-</nav>
+  <mat-toolbar-row>
+    <div style="height: 88vh;">
 <div class="container">
-  <router-outlet></router-outlet>
+
+  <div class="search-wrapper cf">
+    <input type="text" #inp>
+    <button (click)="undefined">Cerca</button>
+  </div>
 </div>
+</div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-toolbar color="primary" *ngIf="!currentUser">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon >menu</mat-icon>
+    </button>
+    <h1>BresciaShop</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/negozi'"> Negozi </a>
+      <a class="nav-link"  routerLink="login" routerLinkActive="active">Login
+        <button mat-raised-button color="primary" routerLink="login" routerLinkActive="active" ></button>
+       </a>
+      <a class="nav-link"  routerLink="register" routerLinkActive="active">Registrati
+        <button mat-raised-button color="primary" routerLink="register" routerLinkActive="active" ></button>
+       </a>
+
+    </div>
+  </mat-toolbar-row>
+
+
+</mat-toolbar>
+
+
+
+<router-outlet></router-outlet>
+<!--
+<app-side-menu></app-side-menu>-->
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+
+      <a mat-list-item [routerLink]="'/accounts'"> Accounts </a>
+      <a mat-list-item [routerLink]="'/create-account'"> Create Account </a>
+      <a mat-list-item [routerLink]="'/contacts'"> Contacts </a>
+      <a mat-list-item [routerLink]="'/create-contact'"> Create Contact </a>
+      <a mat-list-item class="topnav-right" (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 80vh;">
+      <div class="container">
+
+        <div class="search-wrapper cf">
+          <input type="text" #inp>
+          <button (click)="undefined">Cerca</button>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+     <!--  <div *ngFor="let message of messages" class="alert alert-success">{{message.text}}</div>-->
+

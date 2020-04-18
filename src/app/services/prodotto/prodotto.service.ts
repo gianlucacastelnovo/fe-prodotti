@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Prodotto } from '../../models/prodotto';
 import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { retry, catchError, repeat } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class ProdottoService {
+  [x: string]: any;
   basepath = 'http://localhost:8080/prodotto';
 //  sincrobasepath   = 'http://localhost:8080/prodotto/sincrocarrello';
  constructor(private http: HttpClient) { }
@@ -23,12 +24,11 @@ export class ProdottoService {
        alert(error.error.message);
     } else {
       alert(error.status);
-        console.error(`Backend returned code ${error.status}, ` +
+      console.error(`Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
     }
     return throwError('Something bad happened; please try again later.');
   }
-
   getList(): Observable<Prodotto> {
     return this.http
       .get<Prodotto>(this.basepath + '/all')
@@ -40,18 +40,12 @@ export class ProdottoService {
     .pipe(retry(2), catchError(this.handleError));
   }
 
-  addProdotto(prodotto: Prodotto): Observable<Prodotto> {
-    const headers = { 'content-type': 'application/json'}
-    const body = JSON.stringify(prodotto);
-    console.log(body)
-    return this.http.post<Prodotto>(this.basepath + '/add', body,{'headers':headers})
-  }
-
   sincroProdotto(prodotto: Prodotto): Observable<Prodotto> {
     const headers = { 'content-type': 'application/json'}
     const body = JSON.stringify(prodotto);
-    console.log(body)
+    // console.log(body)
     return this.http.post<Prodotto>(this.basepath + '/sincro', body,{'headers':headers})
+
   }
 
 }

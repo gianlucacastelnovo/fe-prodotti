@@ -29,6 +29,7 @@ import {PortalModule} from '@angular/cdk/portal';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
+// import {fab} from '@material/fab';
 
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -70,8 +71,7 @@ import { ProdottoComponent } from './prodotti/prodotto.component';
 
 
 import { CarrelloComponent } from './carrello/carrello.component';
-/* Components */
-import { LogInComponent } from './components/log-in/log-in.component';
+
 import { SideMenuComponent } from './side-menu/side-menu.component';
 
 
@@ -120,10 +120,10 @@ import { RegisterComponent } from './components/register/register.component';
     ProdottoListComponent,
     CarrelloComponent,
 
-    LogInComponent,
-    RegisterComponent,
 
+    RegisterComponent,
     LoginComponent,
+
     UserSettingsComponent ,
     AlertCookiesComponent
 

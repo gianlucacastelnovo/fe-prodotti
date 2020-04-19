@@ -1,28 +1,27 @@
-<!--  LOGIN ALIEXPRESS-->
 
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card class="box">
+
+  <mat-card class="col-md-6 offset-md-3 mt-5 card" fxLayout="row" fxLayoutAlign="center center">
     <mat-card-header>
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
 
-    <form class="example-form">
+    <form >
 
       <mat-card-content>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username">
+        <mat-form-field  class="form-group">
+          <input matInput placeholder="Nome">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field  class="form-group">
           <input matInput placeholder="Email">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field  class="form-group">
           <input matInput placeholder="Password">
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-          <mat-label>Choose a role...</mat-label>
+        <mat-form-field class="form-group">
+          <mat-label>Scegli un Account...</mat-label>
           <mat-select [(value)]="selected">
             <mat-option [value]="roles" *ngFor="let roles of Roles">{{roles}}
             </mat-option>
@@ -34,5 +33,52 @@
       <button mat-stroked-button color="accent" class="btn-block">Register</button>
 
     </form>
+
   </mat-card>
-</div>
+
+  <div class="col-md-6 offset-md-3 mt-5">
+    <!--<div class="alert alert-info"> </div>-->
+    <div class="card">
+        <h4 >Inserisci le tue credenziali</h4> oppure
+        <h4 >
+          <a  routerLink="/register" routerLinkActive="active">
+            <button  class="btn btn-primary" routerLink="register" routerLinkActive="active">
+              Registrati
+        </button> </a>
+        </h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                        <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                </div>
+
+                <div mat-dialog-actions align="end">
+                  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+                  <button [disabled]="loading" class="btn btn-primary" >
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+
+                </div>
+
+
+
+
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+  </div>
+
+

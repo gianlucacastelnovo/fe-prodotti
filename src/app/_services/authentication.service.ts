@@ -6,9 +6,11 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { retry, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { User } from '../../app/models/user';
+import {  FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
+  [x: string]: any;
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
     basepath = 'http://localhost:8080/user';
@@ -64,17 +66,35 @@ export class AuthenticationService {
 
     }
 
+    register( username: string, email: string, password: string, indirizzo: string) {
+
+      const headers = { 'content-type': 'application/json'};
+      const user = new User();
+      user.username = username;
+      user.password = password;
+      user.email = email;
+      user.indirizzo = indirizzo;
+      user.idPartner = null;
+      user.token = '';
+      const body = JSON.stringify(user);
+      console.log(body);
+
+      return this.http.post<any>(this.basepath + '/register', body, { 'headers' : headers})
+      .pipe(
+      retry(2),
+      map(user1 => {
+        localStorage.clear();
+        localStorage.setItem('currentUser', JSON.stringify(user1));
+        this.currentUserSubject.next(user1);
+        return user1;
+    })
+    , catchError(this.handleError)
+    );
 
 
-    login1(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/authenticate`, { username, password })
-            .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                return user;
-            }));
     }
+
+
 
     logout() {
         // remove user from local storage to log user out

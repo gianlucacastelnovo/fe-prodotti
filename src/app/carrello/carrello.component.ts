@@ -39,12 +39,20 @@ export class CarrelloComponent implements OnInit {
     this.service.sincroPC(element).subscribe(response => {
       this.list = response;
     } );
-
+    return false;
   }
   sendMessage(): void {
     this.service.sendMessage('Message from Home Component to App Component!');
 }
+public selectEmployeeFromList(e) {
 
+  e.stopPropagation();
+  e.preventDefault();
+
+  console.log("This onClick method should prevent routerLink from executing.");
+
+  return false;
+}
 clearMessages(): void {
     this.service.clearMessages();
 }

@@ -10,9 +10,6 @@ h2, h3 {
   font-weight: lighter;
 }
 
-body {
-background-color: wheat;
-}
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -47,10 +44,6 @@ div,p {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-/* Add some padding inside the card container */
-.container {
-    padding: 2px 6px;
-}
 
 
 
@@ -167,7 +160,7 @@ border-radius: 0 3px 3px 0;
 .mat-drawer-container {
   top: 60px;
   position: absolute;
-  /* z-index: 1; */
+   z-index: 1;
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
   /* display: block; */

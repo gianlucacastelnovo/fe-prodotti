@@ -1,15 +1,8 @@
 <header>
-  <style>
-      img {
-          width: 10%;
-          height: 10%;
-
-      }
-  </style>
 
 </header>
 
-
+<body>
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
   <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -22,10 +15,11 @@
 
       <li>
         <a class="nav-link"  routerLink="carrello" routerLinkActive="active">Carrello
-          <button mat-raised-button color="primary" routerLink="carrello" routerLinkActive="active" matBadge="{{getCount()}}" matBadgePosition="before" matBadgeColor="accent"></button>
+          <button mat-raised-button color="primary" routerLink="carrello" routerLinkActive="active" matBadge="{{getCount() }}" matBadgePosition="before" matBadgeColor="accent"></button>
          </a>
       </li>
-        <li class="topnav-right">
+      <a class="nav-item nav-link" routerLink="usersettings">UserSetting</a>
+        <li>
             <a class="nav-link" (click)="logout()" routerLinkActive="active">Logout</a>
       </li>
      </ul>
@@ -34,24 +28,22 @@
 
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="!currentUser">
   <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
+
       <a class="nav-item nav-link"  routerLink="register" routerLinkActive="active">Registrati
-        <button mat-raised-button color="primary" routerLink="register" routerLinkActive="active"
-        matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+        <button mat-raised-button color="primary" routerLink="register" routerLinkActive="active">
 
     </button> </a>
-    <a class="nav-item nav-link" routerLink="usersettings">UserSetting</a>
+    <a class="nav-item nav-link"  routerLink="login" routerLinkActive="active">Login
+      <button mat-raised-button color="primary" routerLink="login" routerLinkActive="active">
+
+  </button> </a>
+
+
    </div>
 </nav>
 <div class="container">
  <!-- <div *ngFor="let message of messages" class="alert alert-success">{{message.text}}</div>-->
   <div >
-
-
-      <div class="search-wrapper cf">
-        <input type="text" #inp>
-        <button (click)="undefined">Cerca</button>
-      </div>
 
   </div>
   <router-outlet></router-outlet>
@@ -81,3 +73,4 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>-->
+</body>

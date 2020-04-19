@@ -67,7 +67,7 @@ export class ProdottoComponent implements OnInit {
 
     this.carrelloService.getPCInCarrello(1);
 
-
+    return false;
   }
 
 

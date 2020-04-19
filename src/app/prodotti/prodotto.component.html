@@ -1,42 +1,36 @@
-
-
-<head>
-  <style>
-  </style>
-</head>
-<body>
-  <div class="spinner-container" *ngIf="prodottiData.loading$ | async">
+ <div class="spinner-container" *ngIf="prodottiData.loading$ | async">
     <mat-spinner></mat-spinner>
 </div>
-<div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+
+
+
+<a mat-fab href="#" class="fab-su"> <mat-icon>arrow_upward</mat-icon></a>
+<div fxFlex fxLayout="column container" >
     <div fxLayout="row wrap">
 
-      <div *ngFor="let prodotto of prodottiData" fxFlex="25"  fxFlex.md="33"  fxFlex.sm="50"  fxFlex.xs="50"  fxLayout="column"   style="padding: 5px;" >
+      <div *ngFor="let prodotto of prodottiData" fxFlex="100"  fxFlex.xs="50" fxFlex.sm="33" fxFlex.md="20" fxFlex.lg="15" >
 
-        <mat-card class="vader-product mat-elevation-z1"><!--class="mat-elevation-z1"-->
+        <mat-card class="vader-product"><!--class="mat-elevation-z1"-->
           <mat-card-header>
           </mat-card-header>
 
               <mat-card-title>
-                <div flex-gt-sm="20" layout-align="center center" layout="column">
-                  <img mat-card-image [src]="prodotto.path" flex width="20%">
-                    </div>
-
-
+                <div  layout-align="center center" layout="column">  <img mat-card-image [src]="prodotto.path" >  </div>
                 <div [ngStyle]="{ 'font-size': '15px', 'font-weight': 'bold'}">{{ prodotto.name }}
-              </div></mat-card-title>
-              <mat-card-content> <div [ngStyle]="{'color': 'gray', 'font-size': '12px'}">{{ prodotto.description }}
-                <mat-card-subtitle>{{ prodotto.description }}</mat-card-subtitle>
+              </div>
+              </mat-card-title>
 
-              </div></mat-card-content>
+              <mat-card-content>
+                <div [ngStyle]="{'color': 'gray', 'font-size': '12px'}">{{ prodotto.description }}
+                <mat-card-subtitle>{{ prodotto.description }}</mat-card-subtitle>
+              </div>
+              </mat-card-content>
 
           <mat-card-footer class="form-group d-flex" >
             <div class="p-remove">
               <button  mat-button color="primary"(click)="onChange(prodotto,-1)" [color]="buttonColor" (click)="buttonColor = 'primary'" (mouseout)="buttonColor = 'primary'"
-
               ><mat-icon>remove</mat-icon></button>
             </div>
-
 
             <div class="">
               <input type="text" size="3" minLength="0" maxLength="3" class="form-control-add" [(ngModel)]="prodotto.num" placeholder="0">
@@ -53,5 +47,9 @@
       </div>
     </div>
   </div>
+  <!--
+  <button class="mdc-fab" aria-label="Favorite">
+    <div class="mdc-fab__ripple"></div>
+    <span class="mdc-fab__icon material-icons">favorite</span>
+  </button>-->
 
-</body>

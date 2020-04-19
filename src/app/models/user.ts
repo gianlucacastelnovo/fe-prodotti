@@ -11,6 +11,8 @@ export class User {
   lastName?: string;
   token?: string;
   idPartner: string;
+  email?: string;
+  indirizzo?: string;
   carrelloList?: ProdottoCarrello[];
   num?: number;
 

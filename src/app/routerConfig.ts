@@ -9,7 +9,7 @@ import { CarrelloComponent } from './carrello/carrello.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProdottoListComponent } from './prodotto-list/prodotto-list.component';
 
-import { LogInComponent } from './components/log-in/log-in.component';
+
 import { RegisterComponent } from './components/register/register.component';
 
 import { LoginComponent } from './components1/login/login.component';
@@ -23,7 +23,7 @@ import { AuthGuard } from './_helpers/auth.guard';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
 
-  { path: 'log-in', component: LogInComponent },
+
   { path: 'register', component: RegisterComponent },
 
   { path: 'carrello',        component: CarrelloComponent },

@@ -15,19 +15,21 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 })
 
 export class AppComponent {
+  [x: string]: any;
   title = 'Elenco Alimenti';
   currentUser: User;
   numCarrello: number;
   messages: any[] = [];
     subscription: Subscription;
+    co: any;
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
     private carrelloService: CarrelloService
 ) {
-   // this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.co = 0;
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   // subscribe to home component messages
     this.subscription = this.carrelloService.getMessage().subscribe((message: any) => {
@@ -38,17 +40,31 @@ export class AppComponent {
       }
     });
 }
+async getCount2() {
+  const value =  await this.carrelloService.getCount();
+  //console.log(`async result: ${value}`);
+}
+getCount1() {
+this.resolveAfter2Seconds(20).then(value => {
+  this.co =  localStorage.getItem('num');
+  return this.co;
+  console.log(`promise result: ${value}`);
+});
+}
 
-getCount(){
+ getCount(){
+  try {
+    this.co =  localStorage.getItem('num');//this.carrelloService.getCount();
+    if(this.co == null)
+    this.co=0;
+}
+catch(e) {
+    this.co=99;
 
-  const co = localStorage.getItem('num');
-  if( co == null ) {
-    return 0;
-  }
-  // else {  console.log('--->cont:' + co ); }
 
 
-  return co;
+}
+  return this.co ;
 }
 
 toggleNavbar(){

@@ -102,4 +102,10 @@ export class CarrelloService {
     localStorage.setItem('num', cont + '' );
   }
 
+
+  getCount(){
+
+    localStorage.getItem('num');
+  }
+
 }

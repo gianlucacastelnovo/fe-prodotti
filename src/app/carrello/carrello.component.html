@@ -1,28 +1,22 @@
 
-<head>
-  </head>
-  <body>
-
-      <div fxFlex fxLayout="column" fxLayoutGap="10px" style="height: 100vh">
+      <div fxFlex fxLayout="column" class="container">
         <div fxLayout="row wrap">
 
-          <div *ngFor="let p of list" fxFlex="25"  fxFlex.md="33"  fxFlex.sm="50"  fxFlex.xs="50"  fxLayout="column"   style="padding: 5px;" >
+          <div *ngFor="let p of list" fxFlex="100"  fxFlex.xs="50" fxFlex.sm="33" fxFlex.md="20" fxFlex.lg="15" >
 
-            <mat-card class=" card  mat-elevation-z1">
+            <mat-card class="vader-product">
               <mat-card-header>
               </mat-card-header>
 
                   <mat-card-title>
-                    <div flex-gt-sm="20" layout-align="center center" layout="column">
-                      <img mat-card-image [src]="p.prodotto.path" flex width="20%">
-                        </div>
-
-
+                    <div layout-align="center center" layout="column"> <img mat-card-image [src]="p.prodotto.path" flex width="20%">     </div>
                     <div [ngStyle]="{ 'font-size': '15px', 'font-weight': 'bold'}">{{ p.prodotto.name }}
-                  </div></mat-card-title>
-                  <mat-card-content> <div [ngStyle]="{'color': 'gray', 'font-size': '12px'}">{{ p.prodotto.description }}
-                    <mat-card-subtitle>{{ p.prodotto.description }}</mat-card-subtitle>
+                  </div>
+                 </mat-card-title>
 
+                  <mat-card-content>
+                    <div [ngStyle]="{'color': 'gray', 'font-size': '12px'}">{{ p.prodotto.description }}
+                    <mat-card-subtitle>{{ p.prodotto.description }}</mat-card-subtitle>
                   </div></mat-card-content>
 
               <mat-card-footer class="form-group d-flex" >
@@ -46,9 +40,4 @@
           </div>
         </div>
       </div>
-
-
-
-
-  </body>
 

@@ -1,36 +1,36 @@
 <div class="col-md-6 offset-md-3 mt-5">
   <!--<div class="alert alert-info"> </div>-->
   <div class="card">
-      <h4 >Inserisci le tue credenziali</h4>
-      <h4 >
-
-      </h4>
+      <h4 >Registrati  </h4>
       <div class="card-body">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <form [formGroup]="form" >
               <div class="form-group">
                   <label for="username">Username</label>
                   <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                   <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                      <div *ngIf="f.username.errors.required">Username is required</div>
+                      <div *ngIf="f.username.errors.required">Username obbligatoria</div>
                   </div>
               </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email obbligatoria</div>
+                </div>
+            </div>
               <div class="form-group">
                   <label for="password">Password</label>
                   <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                   <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                      <div *ngIf="f.password.errors.required">Password is required</div>
+                      <div *ngIf="f.password.errors.required">Password Obbligatoria</div>
                   </div>
               </div>
 
               <div mat-dialog-actions align="end">
-                <a  routerLink="/register" routerLinkActive="active">
-                  <button  class="btn btn-primary" routerLink="register" routerLinkActive="active">
-                    Registrati
-              </button> </a>
                 <button mat-button  cdkFocusInitial>Facebook</button>
-                <button [disabled]="loading" class="btn btn-primary" >
+                <button [disabled]="loading" class="btn btn-primary" (click)="onSubmit()">
                   <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                  Login
+                  Registrati
               </button>
 
               </div>

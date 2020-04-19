@@ -1,3 +1,8 @@
+html, body {
+   height: 100vh;
+  background-color: lightskyblue;
+}
+
 .mat-card {
   background:transparent;
   color:black;
@@ -29,12 +34,6 @@ img{
 
 }
 
-
-.mat-button
-{
-  padding:  0 0px;
-  min-width: 0px;
-}
 
 
 
@@ -77,7 +76,6 @@ img{
 }
 
 .mat-card .md-card-subtitle {
-
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -93,7 +91,6 @@ img{
   background-color: #fff;
   border: 1px solid #ced4da;
   border-radius: 0rem;
-  /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
 }
 
 
@@ -105,9 +102,23 @@ img{
 }
 /** Per attaccae footer in basso**/
 .mat-card-footer{
-	position: absolute;/** <-- Add this **/
+  position: absolute;
+  width: 88%;
   margin: 0px;
   bottom: 1px;
+}
+/*gestire flex size text*/
+.fxClass-xs{ font-weight: 400; line-height: 1.5;color: fuchsia;}
+.fxClass-sm{ font-weight: 400; line-height: 1.5;color: tomato;}
+.fxClass-md{ font-weight: 400; line-height: 1.5;color: turquoise;}
+.fxClass-lg{ font-weight: 400; line-height: 1.5;color: gray;}
+
+
+.fab-su{
+z-index: 2;
+  position: fixed;
+  bottom:10px;
+  right: 30px;
 }
 
 
